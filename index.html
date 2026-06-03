@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Ayip 💖</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Fredoka' ,sans-serif;
+}
+
+body{
+background:url("background.jpeg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow-y:auto;
+overflow-x:hidden;
+text-align:center;
+padding:20px;
+}
+
+.card{
+padding:80px 30px 30px 30px;
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.3);
+border-radius:25px;
+width:100%;
+max-width:550px;
+margin:auto;
+max-height:90vh;
+overflow-y:auto;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+animation:zoomFade .5s;
+}
+
+h1{
+color:#ff4f8b;
+margin-bottom:15px;
+font-size:42px;
+font-weight:600;
+}
+
+p{
+font-size:20px;
+color:#555;
+line-height:1.7;
+font-weight:400;
+}
+
+button{
+margin-top:20px;
+padding:14px 30px;
+border:none;
+border-radius:50px;
+background:#ff4f8b;
+color:white;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.gallery{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px;
+margin-top:20px;
+}
+
+.gallery img{
+width:150px;
+height:150px;
+object-fit:cover;
+border-radius:15px;
+}
+
+@keyframes zoomFade{
+from{
+opacity:0;
+transform:scale(.7);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+.heart{
+position:absolute;
+font-size:20px;
+animation:fly 6s linear infinite;
+}
+
+@keyframes fly{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+
+.sticker{
+width:110px;
+display:block;
+margin:-60px auto 15px auto;
+animation:bounce 1.5s infinite;
+pointer-events:none;
+}
+
+@keyframes bounce{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-12px);
+}
+}
+
+.progress-container{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:8px;
+background:rgba(255,255,255,.3);
+z-index:9999;
+}
+
+#progressBar{
+width:0%;
+height:100%;
+background:#ff4f8b;
+transition:.5s;
+}
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+
+<audio id="bgm" loop>
+<source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+<div class="progress-container">
+<div id="progressBar"></div>
+</div>
+
+<div class="card" id="box">
+<img src="cat.gif" class="sticker">
+
+<h1>aloo sayanggg 💖</h1>
+<p>ini part 2 untuk kamu 🎁</p>
+<button onclick="startMusic(); nextStep()">tap<3
+</button>
+</div>
+
+<script>
+
+function startMusic(){
+
+const music = document.getElementById("bgm");
+
+music.volume = 0.3;
+
+music.play();
+
+}
+
+const steps = [
+
+{
+title:"Tunggu Duluu 💌",
+text:"Sebelum lanjut, aku cuma mau bilang sesuatu. aku emang ga bisa nyusun kata-kata, tapi aku tetep mau kamu baca ini sampai habis yaa.",
+btn:"Baca"
+},
+
+{
+title:"BACA INI?!?",
+text:"aku cuma mau bilang kalo aku seneng sama kamu, walaupun banyak berantemnya, kamu si ngeselin banget. untung sayang",
+btn:"Lanjut"
+},
+
+{
+title:"dan... 💖",
+text:"mungkin aku kadang gabisa nunjukin kalo aku sayang kamu, karna aku kayanya keliatan cuek. itu bukan beneran cuek, tapi emang gatau cara ekspresikan diri aja",
+btn:"🥹❤️"
+},
+
+{
+title:"SAYANGGG",
+text:"lovee youu",
+btn:"too"
+},
+
+{
+title:"kamu sayang aku ga?",
+text:"Jawab yang jujur yaa",
+special:"kabur"
+},
+
+{
+title:"KAMU SAYANG AKU GAA?",
+text:"asal pencet aja😤",
+special:"sayang"
+},
+
+{
+title:"Mini Game 🎮",
+text:"Cari tombol 'Ayip bau'",
+special:"bau"
+},
+
+{
+title:"Mini Game Hati ❤️",
+text:"Klik hati 10 kali",
+special:"heartgame"
+},
+
+{
+title:"Foto Pertama 📸",
+text:"aku lucu ga?",
+photo:"foto1.jpeg"
+},
+
+{
+title:"Foto Kedua 📸",
+text:"aku emang selucu itu 😭",
+photo:"foto2.jpeg"
+},
+
+{
+title:"Foto Ketiga 📸",
+text:"Cewe kesayangan kamuu 💖",
+photo:"foto3.jpeg"
+},
+
+{
+title:"Birthday Access",
+text:"masukkan pin untuk membuka hadiah spesial, jika 3x gagal maka harus ulang dari awal",
+special:"pin"
+},
+
+{
+title:"Siap Untuk Hadiahnya? 🎂",
+text:"3... 2... 1...",
+special:"countdown"
+}
+
+];
+
+let current = 0;
+let heartGame = 0;
+let iyaCounter = 0;
+let pinInput = "";
+let gagalPin = 0;
+
+const PIN_BENAR = "281005";
+
+function moveButton(btn){
+
+const x=Math.random()*120-60;
+const y=Math.random()*60-30;
+btn.style.transform=
+`translate(${x}px,${y}px)`;
+}
+
+function updateProgress(){
+
+const totalSteps = steps.length;
+const percent = (current / totalSteps) * 100;
+document.getElementById("progressBar").style.width =
+percent + "%";
+}
+
+function typeWriter(elementId, text, speed=35){
+
+let i = 0;
+document.getElementById(elementId).innerHTML = "";
+const typing = setInterval(()=>{
+
+if(i < text.length){
+
+document.getElementById(elementId).innerHTML += text.charAt(i);
+
+i++;
+
+}else{
+
+clearInterval(typing);
+}
+}, speed);
+}
+
+function nextStep(){
+
+if(current < steps.length){
+
+if(steps[current].special=="kabur"){
+
+document.getElementById("box").innerHTML=`
+
+<h1>${steps[current].title}</h1>
+
+<p id="typingText"></p>
+
+<button
+onmouseover="moveButton(this)"
+ontouchstart="moveButton(this)">
+Iyaa ❤️
+</button>
+
+<button onclick="nextStep()">
+Engga 😭
+</button>
+
+`;
+
+typeWriter(
+"typingText",
+steps[current].text
+);
+
+current++;
+updateProgress();
+return;
+
+}
+
+if(steps[current].special=="bau"){
+
+document.getElementById("box").innerHTML=`
+
+<h1>Cari Ayip bau 😎</h1>
+
+<button onclick="alert('cuih')">
+Ayip Lucu
+</button>
+
+<button onclick="alert('orang lucuan aku ko')">
+Ayip Lucu
+</button>
+
+<button onclick="alert('wleee')">
+Ayip Lucu
+</button>
+
+<button onclick="nextStep()">
+Ayip bau
+</button>
+
+`;
+
+current++;
+updateProgress();
+return;
+
+}
+
+if(steps[current].special=="sayang"){
+
+document.getElementById("box").innerHTML=`
+
+<h1>${steps[current].title}</h1>
+<p id="typingText"></p>
+
+<img src="cat.gif"
+style="
+width:120px;
+margin-top:10px;
+">
+
+<br>
+
+<button onclick="jawabEngga()">
+ga
+</button>
+
+<button onclick="jawabIya()">
+ya
+</button>
+
+`;
+
+typeWriter(
+"typingText",
+steps[current].text
+);
+
+current++;
+updateProgress();
+return;
+
+}
+
+if(steps[current].special=="heartgame"){
+
+heartGame=0;
+
+document.getElementById("box").innerHTML=`
+
+<h1>Klik Hati 10 Kali ❤️</h1>
+
+<h2 id="counter">0/10</h2>
+
+<button onclick="klikHati()">
+❤️
+</button>
+
+`;
+
+current++;
+updateProgress();
+return;
+
+}
+
+
+if(steps[current].photo){
+
+document.getElementById("box").innerHTML=`
+
+<h1>${steps[current].title}</h1>
+
+<p>${steps[current].text}</p>
+
+<img
+src="${steps[current].photo}"
+style="
+width:100%;
+max-width:250px;
+border-radius:20px;
+animation:zoomFade .8s;
+">
+
+<br>
+
+<button onclick="nextStep()">
+Lanjut 💖
+</button>
+
+`;
+
+current++;
+updateProgress();
+return;
+
+}
+
+if(steps[current].special=="pin"){
+
+document.getElementById("box").innerHTML=`
+
+<h1>🔒 Birthday Access</h1>
+
+<p>
+Masukkan PIN untuk membuka hadiah terakhir 💖
+</p>
+
+<h2 id="pinDisplay">
+○ ○ ○ ○ ○ ○
+</h2>
+
+<div>
+
+<button onclick="inputPin('1')">1</button>
+<button onclick="inputPin('2')">2</button>
+<button onclick="inputPin('3')">3</button>
+
+<br>
+
+<button onclick="inputPin('4')">4</button>
+<button onclick="inputPin('5')">5</button>
+<button onclick="inputPin('6')">6</button>
+
+<br>
+
+<button onclick="inputPin('7')">7</button>
+<button onclick="inputPin('8')">8</button>
+<button onclick="inputPin('9')">9</button>
+
+<br>
+
+<button onclick="hapusPin()">⌫</button>
+<button onclick="inputPin('0')">0</button>
+
+</div>
+
+<p id="pinStatus"></p>
+
+`;
+
+current++;
+updateProgress();
+return;
+
+}
+
+document.getElementById("box").innerHTML=`
+
+<h1>${steps[current].title}</h1>
+
+<p id="typingText"></p>
+
+<button onclick="nextStep()">
+${steps[current].btn}
+</button>
+
+`;
+
+typeWriter(
+"typingText",
+steps[current].text
+);
+
+current++;
+updateProgress();
+return;
+
+}else{
+showGift();
+}
+
+if(steps[current].special=="countdown"){
+
+document.getElementById("box").innerHTML=`
+<h1 id="countdown">3</h1>
+`;
+
+let count = 3;
+
+const timer = setInterval(()=>{
+
+count--;
+
+if(count > 0){
+
+document.getElementById("countdown").innerHTML = count;
+
+}else{
+
+clearInterval(timer);
+
+nextStep();
+
+}
+
+},1000);
+
+current++;
+updateProgress();
+return;
+}
+}
+
+function klikHati(){
+heartGame++;
+document.getElementById("counter").innerHTML =
+heartGame + "/10";
+
+if(heartGame >= 10){
+setTimeout(()=>{
+nextStep();
+},500);
+
+}
+
+}
+
+function jawabEngga(){
+
+// efek kaget 😭
+navigator.vibrate(300);
+
+alert("📸 Screenshot berhasil dikirim ke pacar");
+alert("nah kena, kamu jawabnya engga");
+
+nextStep();
+
+}
+
+function jawabIya(){
+iyaCounter++;
+if(iyaCounter == 1){
+
+document.getElementById("box").innerHTML=`
+
+<h1>🤨 boong?</h1>
+
+<p>
+kamu kan ga pernah sayang aku?
+</p>
+
+<button onclick="jawabEngga()">
+😒 Engga
+</button>
+
+<button onclick="jawabIya()">
+❤️ sayang
+</button>
+
+`;
+
+}
+
+else if(iyaCounter == 2){
+
+document.getElementById("box").innerHTML=`
+
+<h1>😭 beneran boong inimah?</h1>
+
+<p>
+Coba pikir lagi deh...
+</p>
+
+<button onclick="jawabEngga()">
+😒 Engga
+</button>
+
+<button onclick="jawabIya()">
+❤️ sayang
+</button>
+
+`;
+
+}
+
+else if(iyaCounter == 3){
+
+document.getElementById("box").innerHTML=`
+
+<h1>😤 yang bener?!</h1>
+
+<p>
+WLEEE
+</p>
+
+<button onclick="nextStep()">
+❤️ Okedeh kalo emang sayang aku
+</button>
+
+`;
+
+}
+
+}
+
+function inputPin(num){
+
+if(pinInput.length >= 6) return;
+
+pinInput += num;
+
+document.getElementById("pinDisplay").innerHTML =
+"● ".repeat(pinInput.length);
+
+if(pinInput.length == 6){
+
+cekPin();
+
+}
+
+}
+
+function hapusPin(){
+
+pinInput = pinInput.slice(0,-1);
+
+document.getElementById("pinDisplay").innerHTML =
+pinInput.length
+? "● ".repeat(pinInput.length)
+: "○ ○ ○ ○ ○ ○";
+
+}
+
+function cekPin(){
+
+if(pinInput === PIN_BENAR){
+
+document.getElementById("pinStatus").innerHTML =
+"✅ Akses diterima";
+
+setTimeout(()=>{
+nextStep();
+},800);
+
+}else{
+
+gagalPin++;
+
+pinInput = "";
+
+document.getElementById("pinDisplay").innerHTML =
+"○ ○ ○ ○ ○ ○";
+
+if(gagalPin >= 3){
+
+document.getElementById("pinStatus").innerHTML =
+"😡 ERROR! Cewe kamu sekarang sedang marah besar. akses ditolak, tingkat sayang kamu belum mencukupi. silahkan minta maaf terlebih dahulu.";
+
+}else{
+
+document.getElementById("pinStatus").innerHTML =
+"❌ PIN salah";
+
+}
+
+}
+
+}
+
+function showGift(){
+
+document.getElementById("box").innerHTML=`
+
+<h1>🎉 HAPPY BIRTHDAY AYIP 🎉</h1>
+
+<p>
+
+happy birthday my loovee-!!
+
+it's you special dayy , wish you all the bestt sayaaang , maaf yaaa belum jadii pacarr yang terbaik buat kamuuu , but i tired my best for u. selamat bertanmbah usiaaa sayangkuuu , semogaaa makin dewasaa & makin sayangg samaaa keluargaa dan akuu jugaa , pacarrkuu yang lucuu iniii hebat bangeett buktinyaa masii bisaa bertahannn sejauhhh waktuuu berjalannn sampai usiaaa kamuuu yanggg sekarang iniii. kalo kamu lagi sedih aku juga ikutan sedih tau, jadi jangan pernahh berpikir kaloo kamuu sendiriann yaa? I LOOOVEE YOOOUUU🤍🫶💐 , makasiii yaaa udaaa lahirrr diduniaaa , makasiii udaaa bertahannn samaaa duniaa yanggg kadanggg sukaaa jahattt inii , dannn makasii udaaa mauuu jadiii rumahhh buattt akuuu disiniii🤍🤍🤍💐.
+
+💌 Dari akuu
+
+</p>
+
+<div style="margin-top:20px;">
+
+<video
+id="videoAyip"
+controls
+autoplay
+style="
+width:100%;
+max-width:320px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+">
+
+<source src="video.mp4" type="video/mp4">
+
+</video>
+
+<p id="pesanAkhir" style="
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+color:#ff4f8b;
+"></p>
+
+</div>
+`;
+
+startHearts();
+
+const video = document.getElementById("videoAyip");
+
+video.onended = () => {
+
+document.getElementById("pesanAkhir").innerHTML =
+"❤️ Makasih yaa udah ada sampai hari ini. Aku harap tahun ini jadi tahun yang bahagia buat kamu. Jangan lupa kalau ada aku yang selalu sayang sama kamu ❤️";
+
+};
+
+confetti({
+particleCount:200,
+spread:120,
+origin:{ y:0.6 }
+});
+
+}
+
+function startHearts(){
+
+setInterval(()=>{
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="💖";
+
+heart.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+},250);
+
+}
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
